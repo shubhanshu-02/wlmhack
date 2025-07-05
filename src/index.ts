@@ -3,6 +3,8 @@
 
 import express, { Request, Response } from 'express';
 import dotenv from 'dotenv';
+import cors from 'cors';
+
 dotenv.config();
 
 import morgan from 'morgan';
@@ -13,6 +15,12 @@ import mongoose from 'mongoose';
 import { authMiddleware } from './middlewares/auth';
 
 const app = express();
+
+app.use(cors({
+  origin: process.env.ORIGIN || 'http://localhost:5173',
+  credentials: true
+}));
+
 app.use(express.json());
 app.use(morgan('dev'));
 
