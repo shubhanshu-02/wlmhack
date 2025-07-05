@@ -12,6 +12,7 @@ PORT=3000
 docker run -d \
   --name local-mongo \
   -p 27017:27017 \
+  -v mongo-data:/data/db \
   -e MONGO_INITDB_ROOT_USERNAME=root \
   -e MONGO_INITDB_ROOT_PASSWORD=secret \
   mongo:latest
